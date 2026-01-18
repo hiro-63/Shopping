@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = (int) $_POST['id'];
 
     try {
-        $dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+        $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 商品情報をDBから取得
@@ -34,7 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
             echo json_encode(['status' => 'error', 'message' => '商品が見つかりません']);
         }
     } catch (PDOException $e) {
-        echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+      echo json_encode(['status' => 'error', 'message' => 'サーバーエラーが発生しました']);
+
     }
 }
+
 
