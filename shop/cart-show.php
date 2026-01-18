@@ -11,11 +11,11 @@
     <?php require 'defo.php'; ?>
     <?php
     session_start();
-    $user = "root";
-    $pass = "";
+
+    require 'config.php';
 
     try {
-        $dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+        $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // この部分を追加（カートページのPHP内）
@@ -36,7 +36,7 @@
 
             foreach ($_SESSION['cart'] as &$item) {
                 if ($item['id'] == $id) {
-                    // ★ 個数を上書き（増やさない）
+                    // 個数を上書き（増やさない）
                     $item['count'] = $count;
                     $found = true;
                     break;
@@ -61,7 +61,7 @@
             foreach ($_SESSION['cart'] as $index => $item) {
                 if ($item['id'] == $deleteId) {
                     unset($_SESSION['cart'][$index]);
-                    $_SESSION['cart'] = array_values($_SESSION['cart']); // インデックス再構成
+                    $_SESSION['cart'] = array_values($_SESSION['cart']); 
                     break;
                 }
             }
@@ -132,3 +132,4 @@
 
 
 </html>
+
