@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>お気に入り一覧</title>
+    <title>お気に入り｜ショッピングサイト</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
         <?php if (!empty($_SESSION['favorite'])): ?>
             <?php foreach ($_SESSION['favorite'] as $item): ?>
                 <div class="cart-card">
-                    <img class="product-img" src="image/<?= htmlspecialchars($item['id']) ?>.jpg?<?= date("YmdHis") ?>"
+                    <img class="product-img" 
+                        src="image/<?= htmlspecialchars($item['id']) ?>.jpg?<?= date("YmdHis") ?>"
                         alt="<?= htmlspecialchars($item['name']) ?>">
 
                     <div class="cart-details">
@@ -46,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
 
                             <!-- 右側：ボタン類 -->
                             <div style="display: flex; gap: 10px;">
+                                
                                 <!-- カートに追加フォーム -->
                                 <form method="POST" action="cart-show.php"
                                     style="display: flex; align-items: center; gap: 5px;">
@@ -80,3 +82,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
 </body>
 
 </html>
+
