@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
         $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // 商品情報をDBから取得
+        // 商品情報を取得
         $stmt = $dbh->prepare("SELECT id, name, price FROM goods WHERE id = ?");
         $stmt->execute([$id]);
         $item = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -38,5 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
 
     }
 }
+
 
 
