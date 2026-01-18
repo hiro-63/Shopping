@@ -8,10 +8,9 @@
 </head>
 
 <body>
-    <?php require 'defo.php'; ?>
-    <?php
-    session_start();
-
+    <?php 
+    session_start(); 
+    require 'defo.php';
     require 'config.php';
 
     try {
@@ -132,5 +131,3 @@
 
 
 </html>
-
-
