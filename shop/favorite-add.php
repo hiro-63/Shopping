@@ -1,9 +1,7 @@
 <?php
 session_start();
 require 'defo.php';
-
-$user = "root";
-$pass = "";
+require 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = (int) $_POST['id'];
@@ -39,3 +37,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 }
+
