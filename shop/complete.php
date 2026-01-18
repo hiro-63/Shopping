@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>購入完了</title>
+    <title>購入完了｜ショッピングサイト</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -112,3 +112,4 @@
 
 
 </html>
+
