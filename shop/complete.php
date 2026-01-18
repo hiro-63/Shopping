@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>2年B組24番 広瀬朱里</title>
+    <title>購入完了</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -20,11 +20,10 @@
         echo '<a href="goods.php">商品一覧に戻る</a>';
         exit;
     }
-    $user = "root";
-    $pass = "";
+   require 'config.php';
 
     try {
-        $dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+        $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // 注文番号がなければ生成
@@ -110,5 +109,6 @@
     </footer>
 
 </body>
+
 
 </html>
