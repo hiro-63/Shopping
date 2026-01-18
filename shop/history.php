@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>2年B組24番 広瀬朱里</title>
+    <title>注文履歴｜ショッピングサイト</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -11,11 +11,11 @@
     <?php require 'defo.php'; ?>
     <?php
     session_start();
-    $user = "root";
-    $pass = "";
+    require 'config.php';
 
     try {
-        $dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+        $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass
+);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $stmt = $dbh->query("SELECT * FROM purchase_history ORDER BY purchase_date DESC");
@@ -69,5 +69,6 @@
     </footer>
 
 </body>
+
 
 </html>
