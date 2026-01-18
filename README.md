@@ -53,6 +53,7 @@ CREATE TABLE purchase_history (
     subtotal INT,
     purchase_date DATETIME
 );
+
 #### ローカルサーバーで起動
 コード
 http://localhost/shop/
