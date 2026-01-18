@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>カートの中身</title>
+    <title>カートの中身｜ショッピングサイト</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -132,4 +132,5 @@
 
 
 </html>
+
 
