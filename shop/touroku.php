@@ -3,45 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>2年B組24番 広瀬朱里</title>
-
+    <title>登録｜ショッピングサイト</title>
+    <link rel="stylesheet" href="shop.css">
 </head>
-<link rel="stylesheet" href="shop.css">
-
-<table>
 
     <body>
-        <?php session_cache_limiter('none'); ?>
-        <?php session_start(); ?>
+       <?php session_cache_limiter('none'); 
+        session_start(); 
+        require 'config.php';
 
-
-        <?php if (isset($_SESSION['login'])) { ?>
-            <?php require 'defo.php'; ?>
-        <?php } else { ?>
+        if (isset($_SESSION['login'])) {
+            require 'defo.php';
+         } else { 
+        ?>
             <!-- ヘッダー -->
             <header class="site-header">
                 <div class="logo-area">
-                    <h1>🛍 ようこそ！ショッピングサイトへ！</h1>
+                    <h1>ようこそ！ショッピングサイトへ！</h1>
                 </div>
             </header>
 
             <!-- ナビゲーション -->
             <nav class="main-nav">
-                <ul>
-                    <a href="loginform.php">ログイン</a>
-                    <a href="tourokuform.php">会員登録</a>
-                </ul>
+             <ul>
+                <li><a href="loginform.php">ログイン</a></li>
+                <li><a href="tourokuform.php">会員登録</a></li>
+            </ul>
+
                 <hr>
             </nav>
-        <?php } ?>
-
-        <?php
-        $user = "root";
-        $pass = "";
+        <?php 
+        } 
+ 
         try {
 
             // 接続
-            $dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+            $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass
+);
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             if (isset($_SESSION['login'])) {
                 // ログイン状態 → UPDATE処理]
@@ -64,20 +63,16 @@
                     'password' => $_POST['password']
                 ];
 
-                echo ' <div class="login-message">';
-                echo ' <p>お客様情報を更新しました</p>';
-                echo '  </div>';
+              echo '<div class="login-message"><p>お客様情報を更新しました。</p></div>';
 
             } else {
-                // 未ログイン → INSERT処理（重複チェックあり）
+                // 新規登録（重複チェック）
                 $stmt = $dbh->prepare("SELECT * FROM login WHERE login = ?");
                 $stmt->execute([$_POST['login']]);
                 $result = $stmt->fetch();
 
                 if ($result) {
-                    echo ' <div class="login-message">';
-                    echo '<p>同じログイン名があります。変更してください。</p>';
-                    echo '</div>';
+                    echo '<div class="login-message"><p>同じログイン名があります。変更してください。</p></div>';
                 } else {
                     $sql = "INSERT INTO login (name, address, login, password) VALUES (?, ?, ?, ?)";
                     $stmt = $dbh->prepare($sql);
@@ -87,10 +82,7 @@
                         $_POST['login'],
                         $_POST['password']
                     ]);
-                    echo ' <div class="login-message">';
-                    echo '<p>お客様情報を登録しました。</p>';
-                    echo '</div>';
-
+                 echo '<div class="login-message"><p>お客様情報を登録しました。</p></div>';
                 }
             }
 
@@ -101,11 +93,13 @@
             die();
         }
         ?>
+            
         <footer class="site-footer">
             <p>&copy; 2025 ショッピングサイト | お問い合わせ | 利用規約 | プライバシー</p>
         </footer>
 
     </body>
 </table>
+
 
 </html>
