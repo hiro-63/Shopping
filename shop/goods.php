@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>2年B組24番 広瀬朱里</title>
+    <title>商品｜ショッピングサイト</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -41,8 +41,7 @@
     </form>
 
     <?php
-    $user = "root";
-    $pass = "";
+   require 'config.php';
 
     $text = '';
     if (isset($_POST['search'])) {
@@ -52,7 +51,8 @@
     }
 
     try {
-        $dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+        $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass
+);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if ($text === '') {
@@ -159,5 +159,6 @@
     </footer>
 
 </body>
+
 
 </html>
