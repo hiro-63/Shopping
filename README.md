@@ -68,8 +68,9 @@ CREATE TABLE purchase_history (
 );
 ```
 #### ローカルサーバーで起動
-コード
+```
 http://localhost/shop/
+```
 
 ## 注意
 学習用の簡易実装です。
