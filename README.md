@@ -34,7 +34,7 @@ PHP と MySQL で作成したシンプルなショッピングサイトです。
 #### リポジトリをクローン
 #### config.php に DB 情報を設定
 ##### config.php の設定例 
-####### プロジェクト直下に config.php を作成し、以下のようにデータベース情報を設定してください。 
+プロジェクト直下に config.php を作成し、以下のようにデータベース情報を設定してください。 
 ```php 
 <?php $db_host = "localhost"; $db_name = "shopping"; $db_user = "root"; $db_pass = "";
 ```
