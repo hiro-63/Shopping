@@ -11,22 +11,33 @@ PHP と MySQL で作成したシンプルなショッピングサイトです。
 ・在庫管理
 
 ## 主なファイル
-コード
-shop/
-├── goods.php          # 商品一覧
-├── cart.php           # カート
-├── buy_complete.php   # 購入完了
-├── tourokuform.php    # 会員登録
-├── loginform.php      # ログイン
-├── config.php         # DB設定
-└── shop.css           # スタイル
+```
+/shop
+├── config.php          # DB接続設定
+├── defo.php            # ヘッダー・ナビゲーション
+│
+├── goods.php           # 商品一覧
+├── cart.php            # カート
+├── buy_complete.php    # 購入完了
+│
+├── tourokuform.php     # 会員登録フォーム
+├── touroku.php         # 会員登録処理
+├── loginform.php       # ログインフォーム
+├── login.php           # ログイン処理
+├── logout.php          # ログアウト処理
+│
+├── shop.css            # スタイル
+└── image/              # 商品画像
+```
 
 ## セットアップ
 #### リポジトリをクローン
 #### config.php に DB 情報を設定
 ##### config.php の設定例 
-プロジェクト直下に config.php を作成し、以下のようにデータベース情報を設定してください。 
-```php <?php $db_host = "localhost"; $db_name = "shopping"; $db_user = "root"; $db_pass = "";```
+####### プロジェクト直下に config.php を作成し、以下のようにデータベース情報を設定してください。 
+```php 
+<?php $db_host = "localhost"; $db_name = "shopping"; $db_user = "root"; $db_pass = "";
+```
 
 #### MySQL に必要なテーブルを作成(例)
 ```sql
