@@ -12,7 +12,7 @@
     <!-- ヘッダー -->
     <header class="site-header">
         <div class="logo-area">
-            <h1>🛍 ようこそ！ショッピングサイトへ！</h1>
+            <h1>ようこそ！ショッピングサイトへ！</h1>
         </div>
     </header>
 
@@ -27,9 +27,6 @@
         <hr>
     </nav>
 
-
-
 </body>
-
 
 </html>
