@@ -49,4 +49,31 @@ try {
 
 <h2>購入履歴</h2>
 
-<?php foreach ($grouped as $orderId =>
+<?php foreach ($grouped as $orderId => $data): ?>
+    <h3>注文番号：<?= htmlspecialchars($orderId) ?></h3>
+    <p>購入日時：<?= htmlspecialchars($data['purchase_date']) ?></p>
+
+    <div class="cart-list">
+        <?php foreach ($data['items'] as $item): ?>
+            <div class="cart-card">
+                <img class="product-img"
+                     src="image/<?= htmlspecialchars($item['product_id']) ?>.jpg?<?= date('YmdHis') ?>"
+                     alt="商品画像">
+
+                <div class="cart-details">
+                    <p>商品名：<?= htmlspecialchars($item['product_name']) ?></p>
+                    <p>価格：<?= htmlspecialchars($item['price']) ?>円</p>
+                    <p>個数：<?= htmlspecialchars($item['count']) ?></p>
+                    <p>小計：<?= htmlspecialchars($item['subtotal']) ?>円</p>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>
+
+<footer class="site-footer">
+    <p>&copy; 2025 ショッピングサイト | お問い合わせ | 利用規約 | プライバシー</p>
+</footer>
+
+</body>
+</html>
