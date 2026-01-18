@@ -27,12 +27,36 @@ shop/
 ##### config.php の設定例 
 プロジェクト直下に config.php を作成し、以下のようにデータベース情報を設定してください。 
 ```php <?php $db_host = "localhost"; $db_name = "shopping"; $db_user = "root"; $db_pass = "";
-#### MySQL に必要なテーブルを作成
+#### MySQL に必要なテーブルを作成(例)
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    address VARCHAR(255),
+    login VARCHAR(100),
+    password VARCHAR(255)
+);
 
-ローカルサーバーで起動
+CREATE TABLE goods (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    price INT,
+    stock INT
+);
 
+CREATE TABLE purchase_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id VARCHAR(50),
+    product_id INT,
+    product_name VARCHAR(100),
+    price INT,
+    count INT,
+    subtotal INT,
+    purchase_date DATETIME
+);
+#### ローカルサーバーで起動
 コード
 http://localhost/shop/
-📝 注意
+
+## 注意
 学習用の簡易実装です。
 商用利用する場合はセキュリティ対策を追加してください。
