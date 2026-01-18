@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>2年B組24番 広瀬朱里</title>
+    <title>カートの中身</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -129,5 +129,6 @@
         }
     </script>
 </body>
+
 
 </html>
