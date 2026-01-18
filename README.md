@@ -26,8 +26,10 @@ shop/
 #### config.php に DB 情報を設定
 ##### config.php の設定例 
 プロジェクト直下に config.php を作成し、以下のようにデータベース情報を設定してください。 
-```php <?php $db_host = "localhost"; $db_name = "shopping"; $db_user = "root"; $db_pass = "";
+```php <?php $db_host = "localhost"; $db_name = "shopping"; $db_user = "root"; $db_pass = "";```
+
 #### MySQL に必要なテーブルを作成(例)
+```sql
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
@@ -53,7 +55,7 @@ CREATE TABLE purchase_history (
     subtotal INT,
     purchase_date DATETIME
 );
-
+```
 #### ローカルサーバーで起動
 コード
 http://localhost/shop/
