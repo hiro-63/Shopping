@@ -1,30 +1,17 @@
 <?php
 session_cache_limiter('none');
 session_start();
+require 'config.php';
 
-// DB接続
-$user = "root";
-$pass = "";
-$dbh = new PDO("mysql:host=localhost;dbname=single", $user, $pass);
+try｛
+    $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
 
 // ログインしている場合は現在の情報を取得
 if (isset($_SESSION['login'])) {
     $id = $_SESSION['login']['id'];
-
-    // セッションに全部入っていればこれでもOK
     $name = $_SESSION['login']['name'];
     $address = $_SESSION['login']['address'];
     $login = $_SESSION['login']['login'];
-
-    // DBから最新を取る場合はこちら
-    /*
-    $stmt = $dbh->prepare("SELECT * FROM login WHERE id = ?");
-    $stmt->execute([$id]);
-    $member = $stmt->fetch(PDO::FETCH_ASSOC);
-    $name    = $member['name'];
-    $address = $member['address'];
-    $login   = $member['login'];
-    */
 } else {
     $name = $address = $login = "";
 }
@@ -34,7 +21,7 @@ if (isset($_SESSION['login'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>会員登録 / 会員情報変更</title>
+    <title>会員登録 / 会員情報変更｜ショッピングサイト</title>
     <link rel="stylesheet" href="shop.css">
 </head>
 
@@ -45,15 +32,15 @@ if (isset($_SESSION['login'])) {
         <!-- ヘッダー -->
         <header class="site-header">
             <div class="logo-area">
-                <h1>🛍 ようこそ！ショッピングサイトへ！</h1>
+                <h1>ようこそ！ショッピングサイトへ！</h1>
             </div>
         </header>
 
         <!-- ナビゲーション -->
         <nav class="main-nav">
             <ul>
-                <a href="loginform.php">ログイン</a>
-                <a href="tourokuform.php">会員登録</a>
+                <li><a href="loginform.php">ログイン</a></li>
+                <li><a href="tourokuform.php">会員登録</a></li>
             </ul>
             <hr>
         </nav>
@@ -92,5 +79,4 @@ if (isset($_SESSION['login'])) {
     </footer>
 
 </body>
-
 </html>
