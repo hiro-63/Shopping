@@ -13,6 +13,8 @@
     <?php
     session_start();
     require 'defo.php';
+    require 'config.php';
+
 
     // カートが空なら購入処理を中止
     if (!isset($_SESSION['cart']) || count($_SESSION['cart']) === 0) {
@@ -20,7 +22,6 @@
         echo '<a href="goods.php">商品一覧に戻る</a>';
         exit;
     }
-   require 'config.php';
 
     try {
         $dbh = new PDO("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
@@ -112,4 +113,5 @@
 
 
 </html>
+
 
